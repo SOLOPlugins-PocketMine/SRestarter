@@ -51,7 +51,7 @@ class SRestarter extends PluginBase{
 
 	public function restart() : bool{
 		static $triggered = false;
-		if($triggered){
+		if($triggered === true){
 			return false;
 		}
 
@@ -77,6 +77,7 @@ class SRestarter extends PluginBase{
 				$this->owner->getServer()->shutdown();
 			}
 		}, 200);
+		$triggered = true;
 		return true;
 	}
 
