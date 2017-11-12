@@ -1,12 +1,13 @@
 <?php
 
-namespace solo\schedulerestarter;
+namespace solo\srestarter;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\scheduler\PluginTask;
 use pocketmine\utils\Config;
+use pocketmine\utils\Utils;
 
 class SRestarter extends PluginBase{
 
@@ -19,6 +20,7 @@ class SRestarter extends PluginBase{
 		$this->getServer()->getScheduler()->scheduleRepeatingTask(new class($this) extends PluginTask{
 			public function onRun($currentTick){
 				$this->owner->check();
+			}
 		}, 60);
 	}
 
