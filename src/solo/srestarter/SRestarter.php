@@ -74,7 +74,7 @@ class SRestarter extends PluginBase{
 				foreach($this->owner->getServer()->getLevels() as $level){
 					$level->save(true);
 				}
-				$server->shutdown();
+				$this->owner->getServer()->shutdown();
 			}
 		}, 200);
 		return true;
