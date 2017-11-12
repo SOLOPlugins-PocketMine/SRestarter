@@ -56,14 +56,14 @@ class SRestarter extends PluginBase{
 		}
 
 		$preBroadcast = $this->config->getNested("reboot-message.pre-broadcast", "");
-		$preBroadcast = is_array($preBroadcast) ? explode("\n", $preBroadcast) : $preBroadcast;
+		$preBroadcast = is_array($preBroadcast) ? implode("\n", $preBroadcast) : $preBroadcast;
 
 		$this->getServer()->broadcastMessage($preBroadcast);
 
 		$this->getServer()->getScheduler()->scheduleDelayedTask(new class($this) extends PluginTask{
 			public function onRun(int $currentTick){
 				$kickMessage = $this->owner->getConfig()->getNested("reboot-message.kick-message", "");
-				$kickMessage = is_array($kickMessage) ? explode("\n", $kickMessage) : $kickMessage;
+				$kickMessage = is_array($kickMessage) ? implode("\n", $kickMessage) : $kickMessage;
 
 				foreach($this->owner->getServer()->getOnlinePlayers() as $player){
 					$player->save();
