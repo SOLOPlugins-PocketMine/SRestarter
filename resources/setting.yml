@@ -1,0 +1,19 @@
+# if sets null, it wont trigger
+reboot-schedule:
+  server-elappsed-minute: 60
+  # format example
+  # 20:00
+  # pm 10:00
+  date-time: null
+  # megabyte
+  over-memory: 2048
+
+reboot-message:
+  pre-broadcast:
+    - "§a===========================§r"
+    - " 서버가 10초 후 재부팅됩니다."
+    - " 5 ~ 10초후 재접속해주세요."
+    - "§a===========================§r"
+  kick-message:
+    - "§a서버가 곧 재부팅됩니다."
+    - "§a5 ~ 10초 후 재접속해주세요."

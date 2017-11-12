@@ -1,0 +1,30 @@
+name: SRestarter
+author: solo
+version: 0.0.1
+api:
+- 3.0.0
+- 3.0.0-ALPHA7
+- 3.0.0-ALPHA8
+- 3.0.0-ALPHA9
+- 3.0.0-ALPHA10
+- 3.0.0-ALPHA11
+- 3.0.0-ALPHA12
+- 3.0.0-ALPHA13
+- 3.0.0-ALPHA14
+- 3.0.0-ALPHA15
+main: solo\srestarter\SRestarter
+commands:
+  재부팅:
+    aliases: ["reboot"]
+    description: 서버를 재부팅합니다.
+    permission: srestarter.command.reboot
+
+permissions:
+  srestarter:
+    default: op
+    children:
+      srestarter.command:
+        default: op
+        children:
+          srestarter.command.reboot:
+            default: op
