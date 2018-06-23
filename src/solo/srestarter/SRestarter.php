@@ -5,7 +5,7 @@ namespace solo\srestarter;
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\scheduler\PluginTask;
+use pocketmine\scheduler\Task;
 use pocketmine\utils\Config;
 use pocketmine\utils\Utils;
 
@@ -20,7 +20,13 @@ class SRestarter extends PluginBase{
 
 		$this->setting = new Config($this->getDataFolder() . "setting.yml", Config::YAML);
 
-		$this->getServer()->getScheduler()->scheduleRepeatingTask(new class($this) extends PluginTask{
+		$this->getScheduler()->scheduleRepeatingTask(new class($this) extends Task{
+			private $owner;
+
+			public function __construct(SRestarter $owner){
+				$this->owner = $owner;
+			}
+			
 			public function onRun($currentTick){
 				$this->owner->check();
 			}
