@@ -73,7 +73,13 @@ class SRestarter extends PluginBase{
 
 		$this->getServer()->broadcastMessage($preBroadcast);
 
-		$this->getServer()->getScheduler()->scheduleDelayedTask(new class($this) extends PluginTask{
+		$this->getScheduler()->scheduleDelayedTask(new class($this) extends Task{
+			private $owner;
+
+			public function __construct(SRestarter $owner){
+				$this->owner = $owner;
+			}
+			
 			public function onRun(int $currentTick){
 				$kickMessage = $this->owner->getSetting()->getNested("reboot-message.kick-message", "");
 				$kickMessage = is_array($kickMessage) ? implode("\n", $kickMessage) : $kickMessage;
